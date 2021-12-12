@@ -1,0 +1,23 @@
+{
+  "root": "packages/cnb-client",
+  "sourceRoot": "packages/cnb-client/src",
+  "projectType": "library",
+  "tags": [],
+  "targets": {
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": ["packages/cnb-client/**/*.{ts,tsx,js,jsx}"]
+      }
+    },
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "outputs": ["coverage/packages/cnb-client"],
+      "options": {
+        "jestConfig": "packages/cnb-client/jest.config.js",
+        "passWithNoTests": true
+      }
+    }
+  }
+}
