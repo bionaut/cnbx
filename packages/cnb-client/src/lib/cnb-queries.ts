@@ -8,7 +8,7 @@ import { cnbCurrenciesUrl } from './cnb-constants'
  */
 async function fetchCurrencyRates() {
   const res = await fetch(cnbCurrenciesUrl)
-  return res.json()
+  return res.text()
 }
 
 export function useCnbCurrencies() {
