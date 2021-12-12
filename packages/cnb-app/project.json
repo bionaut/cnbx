@@ -1,0 +1,74 @@
+{
+  "root": "packages/cnb-app",
+  "sourceRoot": "packages/cnb-app/src",
+  "projectType": "application",
+  "targets": {
+    "build": {
+      "executor": "@nrwl/web:build",
+      "outputs": ["{options.outputPath}"],
+      "defaultConfiguration": "production",
+      "options": {
+        "outputPath": "dist/packages/cnb-app",
+        "index": "packages/cnb-app/src/index.html",
+        "baseHref": "/",
+        "main": "packages/cnb-app/src/main.tsx",
+        "polyfills": "packages/cnb-app/src/polyfills.ts",
+        "proxyConfig": "packages/cnb-app/proxy.conf.json",
+        "tsConfig": "packages/cnb-app/tsconfig.app.json",
+        "assets": [
+          "packages/cnb-app/src/favicon.ico",
+          "packages/cnb-app/src/assets"
+        ],
+        "styles": [],
+        "scripts": [],
+        "webpackConfig": "@nrwl/react/plugins/webpack"
+      },
+      "configurations": {
+        "production": {
+          "fileReplacements": [
+            {
+              "replace": "packages/cnb-app/src/environments/environment.ts",
+              "with": "packages/cnb-app/src/environments/environment.prod.ts"
+            }
+          ],
+          "optimization": true,
+          "outputHashing": "all",
+          "sourceMap": false,
+          "namedChunks": false,
+          "extractLicenses": true,
+          "vendorChunk": false
+        }
+      }
+    },
+    "serve": {
+      "executor": "@nrwl/web:dev-server",
+      "options": {
+        "buildTarget": "cnb-app:build",
+        "hmr": true,
+        "proxyConfig": "packages/cnb-app/proxy.conf.json"
+      },
+      "configurations": {
+        "production": {
+          "buildTarget": "cnb-app:build:production",
+          "hmr": false
+        }
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": ["packages/cnb-app/**/*.{ts,tsx,js,jsx}"]
+      }
+    },
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "outputs": ["coverage/packages/cnb-app"],
+      "options": {
+        "jestConfig": "packages/cnb-app/jest.config.js",
+        "passWithNoTests": true
+      }
+    }
+  },
+  "tags": []
+}
