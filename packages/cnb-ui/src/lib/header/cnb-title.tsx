@@ -1,10 +1,20 @@
 import React, { FC } from 'react'
 import { Heading } from '@chakra-ui/react'
 
-export const CnbMainTitle: FC = () => {
+interface CnbTitleProps {
+  title: string
+}
+
+export const CnbMainTitle: FC<CnbTitleProps> = ({ title }) => {
   return (
-    <Heading flex={2} fontWeight={'800'} color={'white'} as="h2">
-      All-in-one currency exchange platform.
+    <Heading
+      textAlign={['center', 'center', 'left']}
+      fontWeight={'800'}
+      color={'white'}
+      flex={2}
+      as="h2"
+    >
+      {title}
     </Heading>
   )
 }

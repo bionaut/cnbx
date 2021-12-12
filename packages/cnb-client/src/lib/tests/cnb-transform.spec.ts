@@ -11,7 +11,8 @@ EMU|euro|1|EUR|25,465
 Filipíny|peso|100|PHP|44,857
 Hongkong|dolar|1|HKD|2,902
 Chorvatsko|kuna|1|HRK|3,385
-Indie|rupie|100|INR|30,001`
+Indie|rupie|100|INR|30,001
+`
 
 describe('CNB response transforms', () => {
   test('should return default if empty', () => {
@@ -26,7 +27,7 @@ describe('CNB response transforms', () => {
     actual.forEach((actualCurrency) => {
       expect(actualCurrency).toEqual(
         expect.objectContaining({
-          rate: expect.any(Number),
+          rate: expect.any(String),
           country: expect.any(String),
           symbol: expect.any(String),
           name: expect.any(String),
@@ -38,7 +39,7 @@ describe('CNB response transforms', () => {
   test('should ensure valid rate conversion', () => {
     const actual = txtToJSON(response)
     const peso = actual[6]
-    expect(peso.rate).toEqual(0.44)
+    expect(peso.rate).toEqual('0.44857')
   })
 
   test('should transform single row', () => {
@@ -46,8 +47,13 @@ describe('CNB response transforms', () => {
     expect(actual).toEqual({
       country: 'Indie',
       name: 'rupie',
-      rate: 0.301,
+      rate: '0.301',
       symbol: 'INR',
     })
+  })
+
+  test('should parse correctly', () => {
+    const actual = transformRow('Polsko|zlotý|1|PLN|5,498')
+    expect(actual.rate).toEqual('5.498')
   })
 })

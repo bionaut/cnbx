@@ -1,13 +1,16 @@
 import React, { FC } from 'react'
-import { HStack, Heading, Link, Button } from '@chakra-ui/react'
+import { IconButton, Heading, HStack, Link } from '@chakra-ui/react'
+import { RepeatIcon } from '@chakra-ui/icons'
+import { useCnbCurrencies } from '@cnb/cnb-client'
 
 interface CnbMainTitleProps {
   title: string
 }
 
 export const CnbNavbar: FC<CnbMainTitleProps> = ({ title }) => {
+  const { refetch } = useCnbCurrencies()
   return (
-    <HStack justifyContent={'space-between'} w={'full'} p={'3rem'}>
+    <HStack justifyContent={'space-between'} w={'full'}>
       <Heading fontWeight={'800'} color={'white'} as="h1">
         {title}
       </Heading>
@@ -19,9 +22,14 @@ export const CnbNavbar: FC<CnbMainTitleProps> = ({ title }) => {
         >
           About me
         </Link>
-        <Button colorScheme="blue" size="lg">
-          Button
-        </Button>
+        <IconButton
+          colorScheme="blue"
+          size="lg"
+          icon={<RepeatIcon />}
+          title={'Refetch prices'}
+          aria-label={'Refetch prices'}
+          onClick={() => refetch()}
+        />
       </HStack>
     </HStack>
   )

@@ -6,7 +6,7 @@ export interface Currency {
   name: string
   country: string
   symbol: string
-  rate: number
+  rate: string
 }
 
 export type CurrencyList = Currency[]

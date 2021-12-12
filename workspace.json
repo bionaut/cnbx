@@ -1,6 +1,7 @@
 {
   "version": 2,
   "projects": {
+    "cnb-app": "packages/cnb-app",
     "cnb-client": "packages/cnb-client",
     "cnb-ui": "packages/cnb-ui"
   }

@@ -15,6 +15,7 @@ export function useCnbCurrencies() {
   const { data: rawData, ...rest } = useQuery<string>(
     CnbQuery.rates,
     fetchCurrencyRates,
+    { staleTime: Infinity, refetchOnMount: false },
   )
   const data = txtToJSON(rawData) || []
 

@@ -1,31 +1,21 @@
 import React, { FC } from 'react'
-import { Box, HStack, VStack } from '@chakra-ui/react'
-
-import { CnbNavbar } from './cnb-navbar'
-import { CnbMainTitle } from './cnb-title'
-import { CnbTimestamp } from './cnb-timestamp'
-import { CnbExchangeForm } from './cnb-exchange-form'
+import { VStack } from '@chakra-ui/react'
 import { CoolBackground } from './cool-background'
 
-export const CnbHeader: FC = () => {
+export const CnbHeader: FC = ({ children }) => {
   return (
     <VStack
-      alignItems={'flex-start'}
-      p={'1rem'}
       w={'full'}
-      borderRadius={'0.5rem'}
+      p={['1rem', '2rem', '5rem']}
+      pt={['1rem', '3rem']}
+      pb={['2rem']}
+      alignItems={'flex-start'}
       pos={'relative'}
-      overflow={'hidden'}
     >
       <CoolBackground />
-      <Box w={'full'} zIndex={1}>
-        <CnbNavbar title={'CNB.X'} />
-        <HStack justifyContent={'space-between'} w={'full'} p={'3rem'}>
-          <CnbMainTitle />
-          <CnbTimestamp />
-        </HStack>
-        <CnbExchangeForm />
-      </Box>
+      <VStack spacing={'2rem'} w={'full'} zIndex={1}>
+        {children}
+      </VStack>
     </VStack>
   )
 }
