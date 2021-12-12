@@ -15,7 +15,8 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
-      "@cnb/cnb-client": ["packages/cnb-client/src/index.ts"]
+      "@cnb/cnb-client": ["packages/cnb-client/src/index.ts"],
+      "@cnb/ui": ["packages/cnb-ui/src/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]
