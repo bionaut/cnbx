@@ -2,7 +2,9 @@
   "name": "cnb",
   "version": "0.0.0",
   "license": "MIT",
-  "scripts": {},
+  "scripts": {
+    "start": "nx serve cnb-app"
+  },
   "private": true,
   "dependencies": {
     "@chakra-ui/icons": "^1.1.1",
